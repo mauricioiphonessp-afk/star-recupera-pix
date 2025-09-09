@@ -1,45 +1,51 @@
 import { Star } from "lucide-react";
+import testimonialJoao from "@/assets/testimonial-joao.jpg";
+import testimonialMaria from "@/assets/testimonial-maria.jpg";
+import testimonialPedro from "@/assets/testimonial-pedro.jpg";
+import testimonialAna from "@/assets/testimonial-ana.jpg";
+import testimonialCarlos from "@/assets/testimonial-carlos.jpg";
+import testimonialJuliana from "@/assets/testimonial-juliana.jpg";
 
 const TestimonialsSection = () => {
   const testimonials = [
     {
       name: "João S.",
-      avatar: "👨‍💼",
+      avatar: testimonialJoao,
       rating: 5,
       text: "Recuperei meu dinheiro em 2 dias, caiu direto no Pix! Achei que tinha perdido tudo, mas a Recupera Bet resolveu meu problema rapidamente.",
       amount: "R$ 1.247",
     },
     {
       name: "Maria L.",
-      avatar: "👩‍🦱",
+      avatar: testimonialMaria,
       rating: 5,
       text: "Achei que tinha perdido tudo, mas a Recupera Bet resolveu. O processo foi super fácil e transparente. Recomendo para todos!",
       amount: "R$ 856",
     },
     {
       name: "Pedro M.",
-      avatar: "👨‍🎓",
+      avatar: testimonialPedro,
       rating: 5,
       text: "Fácil, rápido e confiável. Em menos de uma semana tinha meu dinheiro de volta. Melhor decisão que tomei este ano!",
       amount: "R$ 2.134",
     },
     {
       name: "Ana C.",
-      avatar: "👩‍💻",
+      avatar: testimonialAna,
       rating: 5,
       text: "Não acreditava que ia funcionar, mas funcionou! Recuperei valores de 3 casas de apostas diferentes. Excelente serviço!",
       amount: "R$ 965",
     },
     {
       name: "Carlos R.",
-      avatar: "👨‍🔧",
+      avatar: testimonialCarlos,
       rating: 5,
       text: "Profissionais competentes e honestos. Me mantiveram informado durante todo o processo. Consegui recuperar tudo que havia perdido.",
       amount: "R$ 1.543",
     },
     {
       name: "Juliana F.",
-      avatar: "👩‍🏫",
+      avatar: testimonialJuliana,
       rating: 5,
       text: "Serviço impecável! A equipe foi muito atenciosa e explicou cada etapa. Recuperei meu dinheiro sem nenhum problema.",
       amount: "R$ 724",
@@ -64,9 +70,9 @@ const TestimonialsSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-accent-foreground">
               O que nossos clientes dizem
             </h2>
-             <p className="text-lg text-brand-accent-foreground/80 max-w-2xl mx-auto">
-               Mais de 5.000 pessoas já recuperaram seus valores com a Recupera Bet
-             </p>
+            <p className="text-lg text-brand-accent-foreground/80 max-w-2xl mx-auto">
+              Mais de 5.000 pessoas já recuperaram seus valores com a Recupera Bet
+            </p>
           </div>
 
           {/* Testimonials Grid */}
@@ -89,9 +95,11 @@ const TestimonialsSection = () => {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-xl">
-                    {testimonial.avatar}
-                  </div>
+                  <img 
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
                   <div className="text-left">
                     <div className="font-semibold text-card-foreground">
                       {testimonial.name}
@@ -109,14 +117,10 @@ const TestimonialsSection = () => {
           <div className="pt-8">
             <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm rounded-full px-6 py-3 border border-card">
               <div className="flex -space-x-2">
-                {["👨‍💼", "👩‍🦱", "👨‍🎓", "👩‍💻"].map((avatar, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-sm border-2 border-card"
-                  >
-                    {avatar}
-                  </div>
-                ))}
+                <img src={testimonialJoao} alt="Cliente" className="w-8 h-8 rounded-full object-cover border-2 border-card" />
+                <img src={testimonialMaria} alt="Cliente" className="w-8 h-8 rounded-full object-cover border-2 border-card" />
+                <img src={testimonialPedro} alt="Cliente" className="w-8 h-8 rounded-full object-cover border-2 border-card" />
+                <img src={testimonialAna} alt="Cliente" className="w-8 h-8 rounded-full object-cover border-2 border-card" />
               </div>
               <span className="text-sm font-medium text-card-foreground">
                 +5.000 pessoas já recuperaram seus valores
