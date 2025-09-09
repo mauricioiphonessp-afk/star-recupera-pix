@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Smartphone, Zap, CreditCard, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HowItWorksSection = () => {
   const steps = [
@@ -88,9 +89,11 @@ const HowItWorksSection = () => {
               <span>O pagamento pode ser realizado em até 7 dias úteis, dependendo da casa de apostas.</span>
             </div>
             
-            <Button className="btn-cta-secondary">
-              🚀 Pedir meu reembolso agora
-            </Button>
+            <Link to="/simulador">
+              <Button className="btn-cta-secondary">
+                🚀 Pedir meu reembolso agora
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
