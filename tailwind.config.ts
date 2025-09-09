@@ -97,6 +97,12 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      boxShadow: {
+        'brand': '0 10px 25px -5px hsl(var(--brand-primary) / 0.3)',
+        'large': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+        'medium': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        'soft': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
