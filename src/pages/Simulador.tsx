@@ -17,7 +17,13 @@ const Simulador = () => {
     taxa: number;
     valorPix: number;
     taxaEspecial: boolean;
-  } | null>(null);
+   } | null>(null);
+   
+   // Estados do cadastro
+   const [nomeCompleto, setNomeCompleto] = useState("");
+   const [cpf, setCpf] = useState("");
+   const [dataNascimento, setDataNascimento] = useState("");
+   const [anoPerda, setAnoPerda] = useState("");
 
   const calcularRecuperacao = () => {
     const valor = parseFloat(valorPerdido.replace(/[^\d,]/g, '').replace(',', '.'));
@@ -285,15 +291,89 @@ const Simulador = () => {
                   </div>
                 </div>
 
+                {/* Seção de Cadastro */}
+                {(casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && (
+                  <div className="space-y-6 pt-8 border-t border-border">
+                    <div className="text-center">
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
+                        Dados para Recuperação
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Preencha seus dados para iniciarmos o processo de recuperação
+                      </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="nome">Nome Completo *</Label>
+                        <Input
+                          id="nome"
+                          type="text"
+                          placeholder="Digite seu nome completo"
+                          value={nomeCompleto}
+                          onChange={(e) => setNomeCompleto(e.target.value)}
+                          className="h-12"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="cpf">CPF *</Label>
+                        <Input
+                          id="cpf"
+                          type="text"
+                          placeholder="000.000.000-00"
+                          value={cpf}
+                          onChange={(e) => setCpf(e.target.value)}
+                          className="h-12"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="nascimento">Data de Nascimento *</Label>
+                        <Input
+                          id="nascimento"
+                          type="date"
+                          value={dataNascimento}
+                          onChange={(e) => setDataNascimento(e.target.value)}
+                          className="h-12"
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="ano-perda">Ano Aproximado que Perdeu o Dinheiro *</Label>
+                        <Input
+                          id="ano-perda"
+                          type="number"
+                          placeholder="2023"
+                          min="2020"
+                          max="2024"
+                          value={anoPerda}
+                          onChange={(e) => setAnoPerda(e.target.value)}
+                          className="h-12"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Botão Final */}
-                <div className="text-center pt-4">
+                <div className="text-center pt-6">
                   <Button 
                     className="btn-cta-primary text-lg py-6 px-8"
                     onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+                    disabled={
+                      (casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && 
+                      (!nomeCompleto || !cpf || !dataNascimento || !anoPerda)
+                    }
                   >
                     🚀 Iniciar minha recuperação agora
                   </Button>
+                  {(casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && 
+                   (!nomeCompleto || !cpf || !dataNascimento || !anoPerda) && (
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Preencha todos os campos obrigatórios para continuar
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
