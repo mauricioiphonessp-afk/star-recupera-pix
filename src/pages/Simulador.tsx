@@ -142,7 +142,7 @@ const Simulador = () => {
                     
                     {resultado.taxaEspecial && (
                       <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa aplicada para valores acima de R$ 1.000: R$ 150
+                        Taxa fixa para valores superiores a R$ 999: R$ 150,00
                       </div>
                     )}
                     
