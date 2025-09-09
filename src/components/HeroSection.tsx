@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="hero-gradient min-h-screen flex items-center py-20">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
@@ -56,20 +56,20 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - Hero Image */}
-          <div className="relative">
+          <div className="relative order-first lg:order-last">
             <div className="relative overflow-hidden rounded-2xl shadow-large">
               <img
                 src={heroImage}
                 alt="Mulher sorrindo ao receber Pix no celular"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover max-h-[400px] lg:max-h-none"
                 loading="eager"
               />
               
               {/* Floating Pix notification */}
-              <div className="absolute top-8 right-8 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-brand animate-pulse">
+              <div className="absolute top-4 right-4 lg:top-8 lg:right-8 bg-primary text-primary-foreground px-3 py-2 lg:px-4 lg:py-2 rounded-lg shadow-brand animate-pulse">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-foreground rounded-full"></div>
-                  <span className="text-sm font-semibold">Pix recebido!</span>
+                  <span className="text-xs lg:text-sm font-semibold">Pix recebido!</span>
                 </div>
               </div>
             </div>
