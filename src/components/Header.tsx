@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -44,9 +45,11 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <Button className="btn-cta-secondary">
-            Simule agora
-          </Button>
+          <Link to="/simulador">
+            <Button className="btn-cta-secondary">
+              Simule agora
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

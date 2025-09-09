@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Zap, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 const heroImage = "/lovable-uploads/c4bcc343-ac15-426c-ba8f-0a45a53efa22.png";
 
 const HeroSection = () => {
@@ -27,10 +28,12 @@ const HeroSection = () => {
 
             {/* CTA Button */}
             <div className="space-y-4">
-              <Button className="btn-cta-primary text-lg">
-                <Zap className="mr-2 h-5 w-5" />
-                Simule agora sua recuperação gratuita
-              </Button>
+              <Link to="/simulador">
+                <Button className="btn-cta-primary text-lg">
+                  <Zap className="mr-2 h-5 w-5" />
+                  Simule agora sua recuperação gratuita
+                </Button>
+              </Link>
               
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Shield className="h-4 w-4 text-primary" />

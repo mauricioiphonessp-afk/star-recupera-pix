@@ -1,5 +1,6 @@
 import { Mail, Shield, Lock, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -14,9 +15,11 @@ const Footer = () => {
             <p className="text-xl text-brand-secondary-foreground/90 max-w-2xl mx-auto">
               Não deixe seu dinheiro perdido. Comece sua recuperação agora mesmo, é grátis!
             </p>
-            <Button className="btn-cta-primary">
-              Simule agora sua recuperação
-            </Button>
+            <Link to="/simulador">
+              <Button className="btn-cta-primary">
+                Simule agora sua recuperação
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
