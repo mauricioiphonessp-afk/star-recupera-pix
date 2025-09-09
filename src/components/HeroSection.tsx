@@ -12,8 +12,8 @@ const HeroSection = () => {
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight text-balance">
                 Perdeu dinheiro em{" "}
-                <span className="text-primary">casas de apostas?</span> A Star
-                Recupera solicita o reembolso pra você
+                <span className="text-primary">casas de apostas?</span> A Recupera
+                Bet solicita o reembolso pra você
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground text-balance">

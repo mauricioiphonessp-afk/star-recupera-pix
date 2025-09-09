@@ -25,11 +25,11 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-primary">Star Recupera</h3>
-            <p className="text-brand-secondary-foreground/80 leading-relaxed">
-              Especializada em recuperar valores perdidos em casas de apostas não licenciadas no Brasil.
-            </p>
+           <div className="space-y-4">
+             <h3 className="text-2xl font-bold text-primary">Recupera Bet</h3>
+             <p className="text-brand-secondary-foreground/80 leading-relaxed">
+               Especializada em recuperar valores perdidos em casas de apostas não licenciadas no Brasil.
+             </p>
             <div className="flex gap-2">
               <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
                 <Shield className="w-4 h-4 text-primary" />
@@ -49,21 +49,21 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a 
-                  href="mailto:contato@starrecupera.com" 
-                  className="text-brand-secondary-foreground/80 hover:text-primary transition-colors"
-                >
-                  contato@starrecupera.com
-                </a>
+                 <a 
+                   href="mailto:contato@recuperabet.com" 
+                   className="text-brand-secondary-foreground/80 hover:text-primary transition-colors"
+                 >
+                   contato@recuperabet.com
+                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a 
-                  href="mailto:suporte@starrecupera.com" 
-                  className="text-brand-secondary-foreground/80 hover:text-primary transition-colors"
-                >
-                  suporte@starrecupera.com
-                </a>
+                 <a 
+                   href="mailto:suporte@recuperabet.com" 
+                   className="text-brand-secondary-foreground/80 hover:text-primary transition-colors"
+                 >
+                   suporte@recuperabet.com
+                 </a>
               </div>
             </div>
           </div>
@@ -132,9 +132,9 @@ const Footer = () => {
       <div className="border-t border-brand-secondary-foreground/20">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-brand-secondary-foreground/60">
-              © 2024 Star Recupera. Todos os direitos reservados.
-            </p>
+             <p className="text-sm text-brand-secondary-foreground/60">
+               © 2024 Recupera Bet. Todos os direitos reservados.
+             </p>
             <div className="flex items-center gap-4 text-xs text-brand-secondary-foreground/60">
               <span>CNPJ: 00.000.000/0001-00</span>
               <span>•</span>

@@ -18,10 +18,10 @@ const CompaniesSection = () => {
     <section className="py-16 bg-card">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Mais de 200 casas de apostas já cobertas pela{" "}
-            <span className="text-primary">Star Recupera</span>
-          </h2>
+           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+             Mais de 200 casas de apostas já cobertas pela{" "}
+             <span className="text-primary">Recupera Bet</span>
+           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Se a sua casa de apostas está na lista, podemos solicitar seu reembolso imediatamente.

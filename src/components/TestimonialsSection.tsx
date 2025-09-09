@@ -6,14 +6,14 @@ const TestimonialsSection = () => {
       name: "João S.",
       avatar: "👨‍💼",
       rating: 5,
-      text: "Recuperei meu dinheiro em 2 dias, caiu direto no Pix! Achei que tinha perdido tudo, mas a Star Recupera resolveu meu problema rapidamente.",
+      text: "Recuperei meu dinheiro em 2 dias, caiu direto no Pix! Achei que tinha perdido tudo, mas a Recupera Bet resolveu meu problema rapidamente.",
       amount: "R$ 1.247",
     },
     {
       name: "Maria L.",
       avatar: "👩‍🦱",
       rating: 5,
-      text: "Achei que tinha perdido tudo, mas a Star Recupera resolveu. O processo foi super fácil e transparente. Recomendo para todos!",
+      text: "Achei que tinha perdido tudo, mas a Recupera Bet resolveu. O processo foi super fácil e transparente. Recomendo para todos!",
       amount: "R$ 856",
     },
     {
@@ -64,9 +64,9 @@ const TestimonialsSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-accent-foreground">
               O que nossos clientes dizem
             </h2>
-            <p className="text-lg text-brand-accent-foreground/80 max-w-2xl mx-auto">
-              Mais de 5.000 pessoas já recuperaram seus valores com a Star Recupera
-            </p>
+             <p className="text-lg text-brand-accent-foreground/80 max-w-2xl mx-auto">
+               Mais de 5.000 pessoas já recuperaram seus valores com a Recupera Bet
+             </p>
           </div>
 
           {/* Testimonials Grid */}

@@ -8,11 +8,13 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Shield className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img 
+              src="/lovable-uploads/928040ae-c6d8-4f53-8ed2-05570d02f6b7.png" 
+              alt="Recupera Bet" 
+              className="w-8 h-8"
+            />
             <span className="text-xl font-bold text-foreground">
-              Star Recupera
+              Recupera Bet
             </span>
           </div>
 
