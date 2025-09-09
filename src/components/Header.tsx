@@ -11,7 +11,7 @@ const Header = () => {
             <img 
               src="/lovable-uploads/928040ae-c6d8-4f53-8ed2-05570d02f6b7.png" 
               alt="Recupera Bet" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
           </div>
 
@@ -24,7 +24,7 @@ const Header = () => {
               Como Funciona
             </a>
             <a 
-              href="#casas-apostas" 
+              href="#casas-cobertas" 
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               Casas Cobertas

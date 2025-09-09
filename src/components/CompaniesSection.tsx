@@ -12,7 +12,7 @@ const CompaniesSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-card">
+    <section id="casas-cobertas" className="py-16 bg-card">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-8">
            <h2 className="text-3xl md:text-4xl font-bold text-foreground">

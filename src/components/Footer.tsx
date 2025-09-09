@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-secondary text-brand-secondary-foreground">
+    <footer id="contato" className="bg-brand-secondary text-brand-secondary-foreground">
       {/* CTA Section */}
       <div className="border-b border-brand-secondary-foreground/20">
         <div className="container mx-auto px-4 py-16">

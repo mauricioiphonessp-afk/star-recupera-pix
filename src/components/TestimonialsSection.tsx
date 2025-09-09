@@ -57,7 +57,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-brand-accent">
+    <section id="depoimentos" className="py-20 bg-brand-accent">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-12">
           <div className="space-y-4">
