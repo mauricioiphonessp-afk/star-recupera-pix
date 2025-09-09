@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Zap, Shield } from "lucide-react";
-import heroImage from "@/assets/hero-woman-phone.jpg";
+const heroImage = "/lovable-uploads/c4bcc343-ac15-426c-ba8f-0a45a53efa22.png";
 
 const HeroSection = () => {
   return (
