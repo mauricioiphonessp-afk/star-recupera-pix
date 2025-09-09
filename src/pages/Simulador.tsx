@@ -11,23 +11,25 @@ const Simulador = () => {
     valorPerdido: number;
     taxa: number;
     valorPix: number;
-    taxaMaxima: boolean;
+    taxaEspecial: boolean;
   } | null>(null);
 
   const calcularRecuperacao = () => {
     const valor = parseFloat(valorPerdido.replace(/[^\d,]/g, '').replace(',', '.'));
     
-    if (!valor || valor <= 0) return;
+    if (!valor || valor < 100) {
+      alert('O valor mínimo para recuperação é R$ 100,00');
+      return;
+    }
 
-    const taxaCalculada = valor * 0.1; // 10%
-    const taxaFinal = Math.min(taxaCalculada, 150);
-    const valorPix = valor - taxaFinal;
+    const taxa = valor >= 1000 ? 150 : 20;
+    const valorPix = valor - taxa;
 
     setResultado({
       valorPerdido: valor,
-      taxa: taxaFinal,
+      taxa,
       valorPix,
-      taxaMaxima: taxaCalculada > 150
+      taxaEspecial: valor >= 1000
     });
   };
 
@@ -85,7 +87,8 @@ const Simulador = () => {
               Simule agora sua recuperação
             </h1>
             <p className="text-xl text-muted-foreground">
-              Descubra em segundos quanto você pode receber de volta no Pix.
+              Descubra em segundos quanto você pode receber de volta no Pix. <br />
+              <span className="text-base">Valor mínimo: R$ 100,00</span>
             </p>
           </div>
 
@@ -99,7 +102,7 @@ const Simulador = () => {
                 <Input
                   id="valor"
                   type="text"
-                  placeholder="R$ 0,00"
+                  placeholder="R$ 100,00 (mínimo)"
                   value={valorPerdido}
                   onChange={handleInputChange}
                   className="text-lg h-12"
@@ -137,9 +140,15 @@ const Simulador = () => {
                       </span>
                     </div>
                     
-                    {resultado.taxaMaxima && (
+                    {resultado.taxaEspecial && (
                       <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa máxima aplicada: R$ 150
+                        Taxa aplicada para valores acima de R$ 1.000: R$ 150
+                      </div>
+                    )}
+                    
+                    {!resultado.taxaEspecial && (
+                      <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
+                        Taxa fixa para valores até R$ 999: R$ 20
                       </div>
                     )}
                     
