@@ -1,17 +1,14 @@
 const CompaniesSection = () => {
   const companies = [
-    { name: "KTO", logo: "🎯" },
-    { name: "Esporte da Sorte", logo: "⚽" },
-    { name: "Blaze", logo: "🔥" },
-    { name: "1xBet", logo: "🏆" },
-    { name: "Betfair", logo: "💎" },
-    { name: "Betano", logo: "⭐" },
-    { name: "Bet365", logo: "🎲" },
-    { name: "Sportingbet", logo: "🏁" },
-    { name: "Rivalo", logo: "🎪" },
-    { name: "Parimatch", logo: "🚀" },
-    { name: "22Bet", logo: "💰" },
-    { name: "Melbet", logo: "🎊" },
+    { name: "Bet365", logo: "/lovable-uploads/4eb87dfd-76e0-466a-9a3f-98ea49aafe1b.png" },
+    { name: "KTO", logo: "/lovable-uploads/b958e5f3-ecad-4c43-a48d-1b2c15073350.png" },
+    { name: "1XBET", logo: "/lovable-uploads/b230acb4-d96d-4c7c-9a34-b1ec4faf3557.png" },
+    { name: "Rivalo", logo: "/lovable-uploads/9f0212d0-461e-4fb0-a188-f5d463f78a8d.png" },
+    { name: "Esporte da Sorte", logo: "/lovable-uploads/f4c34fbf-f63f-40be-b722-f441d4365a44.png" },
+    { name: "Blaze", logo: "/lovable-uploads/f1b49819-91d6-4494-8513-39e25a9156c1.png" },
+    { name: "Sportingbet", logo: "/lovable-uploads/b0d12206-623d-4bfa-adb1-36d23d3fb2ef.png" },
+    { name: "Betano", logo: "/lovable-uploads/b9e75452-1be9-4b2f-8cd7-d1d5e80f838c.png" },
+    { name: "Betfair", logo: "/lovable-uploads/df363fc7-1913-41c1-a949-5b7d740f41b4.png" },
   ];
 
   return (
@@ -28,17 +25,18 @@ const CompaniesSection = () => {
           </p>
 
           {/* Companies Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 pt-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 pt-8 max-w-4xl mx-auto">
             {companies.map((company, index) => (
               <div
                 key={company.name}
-                className="company-logo bg-background border border-border rounded-xl p-6 flex flex-col items-center justify-center h-24 hover:border-primary"
+                className="company-logo bg-background border border-border rounded-xl p-6 flex items-center justify-center h-20 hover:border-primary transition-colors"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-2xl mb-1">{company.logo}</div>
-                <span className="text-xs font-medium text-muted-foreground text-center">
-                  {company.name}
-                </span>
+                <img 
+                  src={company.logo} 
+                  alt={company.name}
+                  className="max-h-12 max-w-full object-contain"
+                />
               </div>
             ))}
           </div>
