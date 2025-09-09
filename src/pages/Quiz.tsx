@@ -41,9 +41,6 @@ const Quiz = () => {
     setAnswers({ ...answers, customHouse: value });
   };
 
-  const continueTQSimulator = () => {
-    navigate("/simulador");
-  };
 
   const bettingHouses = [
     "KTO", "Esporte da Sorte", "Blaze", "1xBet", "Betfair", 
@@ -67,7 +64,7 @@ const Quiz = () => {
           </div>
           
           <Button 
-            onClick={continueTQSimulator}
+            onClick={() => navigate("/simulador")}
             className="btn-cta-primary w-full text-lg py-6"
           >
             Calcular meu reembolso
