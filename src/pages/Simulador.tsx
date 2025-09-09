@@ -187,10 +187,20 @@ const Simulador = () => {
               )}
 
               {resultado && (
-                <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-6">
-                    O pagamento pode ser realizado em até 7 dias úteis, dependendo da casa de apostas.
-                  </p>
+                <div className="space-y-4">
+                  <div className="bg-muted p-4 rounded-lg border border-border">
+                    <p className="text-sm text-muted-foreground flex items-start gap-2">
+                      <span className="text-orange-500">⚠️</span>
+                      <span>
+                        <strong>Não precisa ser o valor exato, apenas aproximado.</strong> Caso você tenha perdido um valor maior, a equipe da Recupera Bet entrará em contato com você.
+                      </span>
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-6">
+                      O pagamento pode ser realizado em até 7 dias úteis, dependendo da casa de apostas.
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
@@ -275,15 +285,6 @@ const Simulador = () => {
                   </div>
                 </div>
 
-                {/* Aviso */}
-                <div className="bg-muted p-4 rounded-lg border border-border">
-                  <p className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-orange-500">⚠️</span>
-                    <span>
-                      <strong>Não precisa ser o valor exato, apenas aproximado.</strong> Caso você tenha perdido um valor maior, a equipe da Recupera Bet entrará em contato com você.
-                    </span>
-                  </p>
-                </div>
 
                 {/* Botão Final */}
                 <div className="text-center pt-4">
