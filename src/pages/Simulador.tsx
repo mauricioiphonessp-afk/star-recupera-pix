@@ -134,7 +134,7 @@ const Simulador = () => {
                     </div>
                     
                     <div className="flex justify-between items-center">
-                      <span className="text-accent-foreground">Taxa da Star Recupera:</span>
+                      <span className="text-accent-foreground">Receba Bet recupera:</span>
                       <span className="font-semibold text-accent-foreground">
                         {formatarMoeda(resultado.taxa)}
                       </span>
