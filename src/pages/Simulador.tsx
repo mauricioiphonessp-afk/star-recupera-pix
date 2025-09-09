@@ -2,11 +2,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, Calculator, Mail, Shield, Lock, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Simulador = () => {
   const [valorPerdido, setValorPerdido] = useState("");
+  const [casasSelecionadas, setCasasSelecionadas] = useState<string[]>([]);
+  const [outraCasa, setOutraCasa] = useState("");
+  const [maisDeCasa, setMaisDeCasa] = useState("");
   const [resultado, setResultado] = useState<{
     valorPerdido: number;
     taxa: number;
@@ -31,6 +36,21 @@ const Simulador = () => {
       valorPix,
       taxaEspecial: valor >= 1000
     });
+  };
+
+  const casasDeApostas = [
+    "KTO", "Esporte da Sorte", "Blaze", "1xBet", "Betfair", "Betano", 
+    "Bet365", "Sportingbet", "Rivalo", "Pixbet", "Parimatch", "F12.bet",
+    "Galera.bet", "Casa de Apostas", "Betmotion", "LeoVegas", "Bodog",
+    "Betway", "William Hill", "Stake", "BC.Game", "Sportsbet.io"
+  ];
+
+  const handleCasaChange = (casa: string, checked: boolean) => {
+    if (checked) {
+      setCasasSelecionadas([...casasSelecionadas, casa]);
+    } else {
+      setCasasSelecionadas(casasSelecionadas.filter(c => c !== casa));
+    }
   };
 
   const formatarMoeda = (valor: number) => {
@@ -171,7 +191,102 @@ const Simulador = () => {
                   <p className="text-sm text-muted-foreground mb-6">
                     O pagamento pode ser realizado em até 7 dias úteis, dependendo da casa de apostas.
                   </p>
-                  
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Seção de Casas de Apostas */}
+          {resultado && (
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-large mt-8">
+              <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
+                Por qual casa de apostas você perdeu dinheiro?
+              </h3>
+              
+              <div className="space-y-6">
+                {/* Lista de Casas */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {casasDeApostas.map((casa) => (
+                    <div key={casa} className="flex items-center space-x-2">
+                      <Checkbox 
+                        id={casa}
+                        checked={casasSelecionadas.includes(casa)}
+                        onCheckedChange={(checked) => handleCasaChange(casa, checked as boolean)}
+                      />
+                      <label 
+                        htmlFor={casa} 
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                      >
+                        {casa}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Opções Especiais */}
+                <div className="space-y-4 border-t pt-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="outra-casa"
+                        checked={casasSelecionadas.includes("outra")}
+                        onCheckedChange={(checked) => {
+                          handleCasaChange("outra", checked as boolean);
+                          if (!checked) setOutraCasa("");
+                        }}
+                      />
+                      <label htmlFor="outra-casa" className="text-sm font-medium cursor-pointer">
+                        Outra casa
+                      </label>
+                    </div>
+                    {casasSelecionadas.includes("outra") && (
+                      <Input
+                        placeholder="Digite o nome da casa de apostas"
+                        value={outraCasa}
+                        onChange={(e) => setOutraCasa(e.target.value)}
+                        className="ml-6"
+                      />
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="mais-casas"
+                        checked={casasSelecionadas.includes("multiplas")}
+                        onCheckedChange={(checked) => {
+                          handleCasaChange("multiplas", checked as boolean);
+                          if (!checked) setMaisDeCasa("");
+                        }}
+                      />
+                      <label htmlFor="mais-casas" className="text-sm font-medium cursor-pointer">
+                        Mais de uma casa
+                      </label>
+                    </div>
+                    {casasSelecionadas.includes("multiplas") && (
+                      <Textarea
+                        placeholder="Digite as casas de apostas (uma por linha ou separadas por vírgula)"
+                        value={maisDeCasa}
+                        onChange={(e) => setMaisDeCasa(e.target.value)}
+                        className="ml-6"
+                        rows={3}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {/* Aviso */}
+                <div className="bg-muted p-4 rounded-lg border border-border">
+                  <p className="text-sm text-muted-foreground flex items-start gap-2">
+                    <span className="text-orange-500">⚠️</span>
+                    <span>
+                      <strong>Não precisa ser o valor exato, apenas aproximado.</strong> Caso você tenha perdido um valor maior, a equipe da Recupera Bet entrará em contato com você.
+                    </span>
+                  </p>
+                </div>
+
+                {/* Botão Final */}
+                <div className="text-center pt-4">
                   <Button 
                     className="btn-cta-primary text-lg py-6 px-8"
                     onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
@@ -179,9 +294,9 @@ const Simulador = () => {
                     🚀 Iniciar minha recuperação agora
                   </Button>
                 </div>
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </main>
 
