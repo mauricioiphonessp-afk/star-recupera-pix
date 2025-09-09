@@ -1,40 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Star Recupera Design System */
 @layer base {
   :root {
+    /* Background colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 15%;
 
+    /* Brand colors - Star Recupera Green Palette */
+    --brand-primary: 120 100% 34%; /* #00b050 */
+    --brand-primary-foreground: 0 0% 100%;
+    --brand-primary-hover: 120 100% 25%; /* Darker green for hover */
+    
+    --brand-secondary: 120 100% 20%; /* #006633 */
+    --brand-secondary-foreground: 0 0% 100%;
+    
+    --brand-accent: 120 50% 92%; /* #d9f2e3 */
+    --brand-accent-foreground: 120 100% 20%;
+
+    /* UI colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 120 100% 34%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 120 50% 92%;
+    --accent-foreground: 120 100% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 120 100% 34%;
+
+    /* Custom gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-secondary)));
+    --gradient-cta: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-primary-hover)));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-large: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --shadow-brand: 0 10px 25px -5px hsl(var(--brand-primary) / 0.3);
 
     --radius: 0.5rem;
 
@@ -100,6 +122,51 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+}
+
+@layer components {
+  /* CTA Button Variants */
+  .btn-cta-primary {
+    @apply bg-gradient-to-r from-primary to-brand-primary-hover text-primary-foreground font-semibold py-4 px-8 rounded-xl shadow-brand hover:shadow-large transition-all duration-300 hover:scale-105;
+  }
+  
+  .btn-cta-secondary {
+    @apply bg-primary text-primary-foreground font-semibold py-3 px-6 rounded-lg shadow-medium hover:bg-brand-primary-hover transition-all duration-300;
+  }
+
+  /* Hero gradient background */
+  .hero-gradient {
+    @apply bg-gradient-to-br from-brand-accent via-background to-brand-accent/50;
+  }
+
+  /* Testimonial cards */
+  .testimonial-card {
+    @apply bg-card border border-border rounded-xl p-6 shadow-soft hover:shadow-medium transition-all duration-300;
+  }
+
+  /* Company logos section */
+  .company-logo {
+    @apply grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100;
+  }
+
+  /* Process steps */
+  .process-step {
+    @apply bg-accent text-accent-foreground rounded-2xl p-8 text-center shadow-soft hover:shadow-medium transition-all duration-300;
+  }
+
+  /* Animations */
+  .fade-in-up {
+    @apply transform translate-y-4 opacity-0 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-up.in-view {
+    @apply translate-y-0 opacity-100;
+  }
+
+  /* Custom utilities */
+  .text-balance {
+    text-wrap: balance;
   }
 }
