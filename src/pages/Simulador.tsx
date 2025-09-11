@@ -33,12 +33,6 @@ const Simulador = () => {
       return;
     }
 
-    // Se o valor for exatamente 100 reais, redireciona para o link de pagamento
-    if (valor === 100) {
-      window.open('https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037', '_blank');
-      return;
-    }
-
     const taxa = valor >= 1000 ? 150 : 20;
     const valorPix = valor - taxa;
 
@@ -366,7 +360,7 @@ const Simulador = () => {
                 <div className="text-center pt-6">
                   <Button 
                     className="btn-cta-primary text-lg py-6 px-8"
-                    onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+                    onClick={() => window.open('https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037', '_blank')}
                     disabled={
                       (casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && 
                       (!nomeCompleto || !cpf || !dataNascimento || !anoPerda)
