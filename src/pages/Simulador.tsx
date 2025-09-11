@@ -516,6 +516,18 @@ const Simulador = () => {
                         alert('Por favor, insira sua chave PIX');
                         return;
                       }
+                      
+                      // Redirecionar para o link de pagamento baseado no valor
+                      let paymentLink = '';
+                      if (resultado.valorPerdido >= 100 && resultado.valorPerdido <= 500) {
+                        paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94ae1-a92a-48e1-84f1-f839e86d842e';
+                      } else if (resultado.valorPerdido >= 500 && resultado.valorPerdido <= 900) {
+                        paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94ae1-a92a-48e1-84f1-f839e86d842e';
+                      } else {
+                        // Para valores acima de 900, usar o mesmo link por enquanto
+                        paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94ae1-a92a-48e1-84f1-f839e86d842e';
+                      }
+                      window.open(paymentLink, '_blank');
                       setEtapaFluxo('finalizado');
                     }}
                     disabled={!chavePix.trim()}
