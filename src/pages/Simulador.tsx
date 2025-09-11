@@ -404,7 +404,17 @@ const Simulador = () => {
                 <div className="text-center pt-6">
                   <Button 
                     className="btn-cta-primary text-lg py-6 px-8"
-                    onClick={() => window.open('https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037', '_blank')}
+                    onClick={() => {
+                      const valor = usarValorCustomizado 
+                        ? parseFloat(valorCustomizado.replace(/[^\d,]/g, '').replace(',', '.'))
+                        : valorPerdido[0];
+                      
+                      const link = valor === 100 
+                        ? 'https://app.pushinpay.com.br/service/pay/9fd94086-dd67-4b68-8ee6-e2afaeb02cb8'
+                        : 'https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037';
+                      
+                      window.open(link, '_blank');
+                    }}
                     disabled={
                       (casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && 
                       (!nomeCompleto || !cpf || !dataNascimento || !anoPerda)
