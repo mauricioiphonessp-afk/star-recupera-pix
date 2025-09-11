@@ -427,9 +427,16 @@ const Simulador = () => {
                         ? parseFloat(valorCustomizado.replace(/[^\d,]/g, '').replace(',', '.'))
                         : valorPerdido[0];
                       
-                      const link = valor === 100 
-                        ? 'https://app.pushinpay.com.br/service/pay/9fd94086-dd67-4b68-8ee6-e2afaeb02cb8'
-                        : 'https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037';
+                      let link;
+                      if (valor === 100) {
+                        link = 'https://app.pushinpay.com.br/service/pay/9fd94086-dd67-4b68-8ee6-e2afaeb02cb8';
+                      } else if (valor === 200) {
+                        link = 'https://app.pushinpay.com.br/service/pay/9fd94554-6995-45ea-ab56-c07391189cec';
+                      } else if (valor === 300) {
+                        link = 'https://app.pushinpay.com.br/service/pay/9fd945fc-c344-436a-9258-c2e53e2f61c0';
+                      } else {
+                        link = 'https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037';
+                      }
                       
                       window.open(link, '_blank');
                     }}
