@@ -236,7 +236,7 @@ const Simulador = () => {
                     
                     {!resultado.taxaEspecial && (
                       <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa progressiva: R$ 20 base + R$ 10 a cada R$ 100
+                        Taxa progressiva: R$ 20 base + R$ 10 a cada R$ 100 (até R$ 1.000)
                       </div>
                     )}
                     
