@@ -45,7 +45,7 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <Link to="/idade-verificacao">
+          <Link to="/simulador">
             <Button className="btn-cta-secondary">
               Simule agora
             </Button>

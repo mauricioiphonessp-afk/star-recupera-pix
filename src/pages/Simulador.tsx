@@ -118,7 +118,7 @@ const Simulador = () => {
               alt="Recupera Bet" 
               className="h-12 w-auto"
             />
-            <Link to="/">
+            <Link to="/home">
               <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar para Landing Page

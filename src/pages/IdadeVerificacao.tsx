@@ -11,7 +11,7 @@ const IdadeVerificacao = () => {
   const handleIdadeConfirmada = () => {
     setEtapa('confirmacao');
     setTimeout(() => {
-      navigate('/simulador');
+      navigate('/home');
     }, 2000);
   };
 
@@ -24,18 +24,12 @@ const IdadeVerificacao = () => {
       {/* Header */}
       <header className="bg-background border-b border-border py-4">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <img 
               src="/lovable-uploads/928040ae-c6d8-4f53-8ed2-05570d02f6b7.png" 
               alt="Recupera Bet" 
               className="h-12 w-auto"
             />
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Voltar para Landing Page
-              </Button>
-            </Link>
           </div>
         </div>
       </header>
@@ -102,7 +96,7 @@ const IdadeVerificacao = () => {
                   Verificação Confirmada!
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  Redirecionando você para o simulador de recuperação...
+                  Redirecionando você para a página inicial...
                 </p>
               </div>
 
@@ -135,12 +129,9 @@ const IdadeVerificacao = () => {
                 </p>
               </div>
 
-              <Link to="/">
-                <Button variant="outline" className="w-full">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Voltar para a Página Inicial
-                </Button>
-              </Link>
+              <p className="text-muted-foreground text-center mt-4">
+                Você pode fechar esta aba do navegador.
+              </p>
             </Card>
           )}
         </div>

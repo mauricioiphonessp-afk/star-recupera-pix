@@ -28,7 +28,7 @@ const HeroSection = () => {
 
             {/* CTA Button */}
             <div className="space-y-4">
-              <Link to="/idade-verificacao">
+              <Link to="/simulador">
                 <Button className="btn-cta-primary text-lg">
                   <Zap className="mr-2 h-5 w-5" />
                   Simule agora sua recuperação gratuita
