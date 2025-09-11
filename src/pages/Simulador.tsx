@@ -38,10 +38,16 @@ const Simulador = () => {
       return;
     }
 
-    // Nova lógica de taxa: até 1000 cresce R$ 10 a cada R$ 100, depois R$ 150 fixo
+    // Validação para valor customizado
+    if (usarValorCustomizado && valor < 1000) {
+      alert('Para valores customizados, o mínimo é R$ 1.000,00');
+      return;
+    }
+
+    // Nova lógica de taxa
     let taxa;
-    if (valor >= 1000) {
-      taxa = 150;
+    if (usarValorCustomizado || valor >= 1000) {
+      taxa = 150; // Taxa fixa para valores >= 1000 ou customizados
     } else {
       // Para cada R$ 100, adiciona R$ 10 à taxa base de R$ 20
       const centenas = Math.floor(valor / 100);
@@ -54,7 +60,7 @@ const Simulador = () => {
       valorPerdido: valor,
       taxa,
       valorPix,
-      taxaEspecial: valor >= 1000
+      taxaEspecial: usarValorCustomizado || valor >= 1000
     });
   };
 
@@ -165,11 +171,14 @@ const Simulador = () => {
                   <div className="space-y-4">
                     <Input
                       type="text"
-                      placeholder="R$ 1.500,00"
+                      placeholder="R$ 1.000,00 (mínimo)"
                       value={valorCustomizado}
                       onChange={handleInputChange}
                       className="text-lg h-12 text-center"
                     />
+                    <p className="text-sm text-muted-foreground text-center">
+                      Para valores maiores que R$ 1.000 - Taxa fixa: R$ 150
+                    </p>
                   </div>
                 )}
 
@@ -183,7 +192,7 @@ const Simulador = () => {
                     }}
                   />
                   <label htmlFor="valor-customizado" className="text-sm font-medium cursor-pointer">
-                    Quero inserir um valor exato
+                    Quero inserir um valor maior (a partir de R$ 1.000)
                   </label>
                 </div>
               </div>
