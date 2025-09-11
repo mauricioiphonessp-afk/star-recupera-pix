@@ -89,7 +89,7 @@ const HowItWorksSection = () => {
               <span>O pagamento pode ser realizado em até 7 dias úteis, dependendo da casa de apostas.</span>
             </div>
             
-            <Link to="/simulador">
+            <Link to="/idade-verificacao">
               <Button className="btn-cta-secondary">
                 🚀 Pedir meu reembolso agora
               </Button>

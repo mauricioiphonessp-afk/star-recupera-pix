@@ -15,7 +15,7 @@ const Footer = () => {
             <p className="text-xl text-brand-secondary-foreground/90 max-w-2xl mx-auto">
               Não deixe seu dinheiro perdido. Comece sua recuperação agora mesmo, é grátis!
             </p>
-            <Link to="/simulador">
+            <Link to="/idade-verificacao">
               <Button className="btn-cta-primary">
                 Simule agora sua recuperação
               </Button>
