@@ -38,7 +38,16 @@ const Simulador = () => {
       return;
     }
 
-    const taxa = valor >= 1000 ? 150 : 20;
+    // Nova lógica de taxa: até 1000 cresce R$ 10 a cada R$ 100, depois R$ 150 fixo
+    let taxa;
+    if (valor >= 1000) {
+      taxa = 150;
+    } else {
+      // Para cada R$ 100, adiciona R$ 10 à taxa base de R$ 20
+      const centenas = Math.floor(valor / 100);
+      taxa = 20 + ((centenas - 1) * 10);
+    }
+    
     const valorPix = valor - taxa;
 
     setResultado({
@@ -212,13 +221,13 @@ const Simulador = () => {
                     
                     {resultado.taxaEspecial && (
                       <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa fixa para valores superiores a R$ 999: R$ 150,00
+                        Taxa fixa para valores a partir de R$ 1.000: R$ 150,00
                       </div>
                     )}
                     
                     {!resultado.taxaEspecial && (
                       <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa fixa para valores até R$ 999: R$ 20
+                        Taxa progressiva: R$ 20 base + R$ 10 a cada R$ 100
                       </div>
                     )}
                     
