@@ -522,9 +522,9 @@ const Simulador = () => {
                       if (resultado.valorPerdido >= 100 && resultado.valorPerdido <= 500) {
                         paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94ae1-a92a-48e1-84f1-f839e86d842e';
                       } else if (resultado.valorPerdido >= 500 && resultado.valorPerdido <= 900) {
-                        paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94ae1-a92a-48e1-84f1-f839e86d842e';
+                        paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94b37-2512-49d9-88fe-4f185cc0fb02';
                       } else {
-                        // Para valores acima de 900, usar o mesmo link por enquanto
+                        // Para valores acima de 900, usar o primeiro link
                         paymentLink = 'https://app.pushinpay.com.br/service/pay/9fd94ae1-a92a-48e1-84f1-f839e86d842e';
                       }
                       window.open(paymentLink, '_blank');
