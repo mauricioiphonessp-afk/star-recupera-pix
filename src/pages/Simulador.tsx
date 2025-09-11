@@ -33,6 +33,12 @@ const Simulador = () => {
       return;
     }
 
+    // Se o valor for exatamente 100 reais, redireciona para o link de pagamento
+    if (valor === 100) {
+      window.open('https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037', '_blank');
+      return;
+    }
+
     const taxa = valor >= 1000 ? 150 : 20;
     const valorPix = valor - taxa;
 
