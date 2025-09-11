@@ -4,11 +4,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Slider } from "@/components/ui/slider";
 import { ArrowLeft, Calculator, Mail, Shield, Lock, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Simulador = () => {
-  const [valorPerdido, setValorPerdido] = useState("");
+  const [valorPerdido, setValorPerdido] = useState([100]);
   const [casasSelecionadas, setCasasSelecionadas] = useState<string[]>([]);
   const [outraCasa, setOutraCasa] = useState("");
   const [maisDeCasa, setMaisDeCasa] = useState("");
@@ -26,7 +27,7 @@ const Simulador = () => {
    const [anoPerda, setAnoPerda] = useState("");
 
   const calcularRecuperacao = () => {
-    const valor = parseFloat(valorPerdido.replace(/[^\d,]/g, '').replace(',', '.'));
+    const valor = valorPerdido[0];
     
     if (!valor || valor < 100) {
       alert('O valor mínimo para recuperação é R$ 100,00');
@@ -66,22 +67,6 @@ const Simulador = () => {
     }).format(valor);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let value = e.target.value;
-    // Remove tudo que não é número
-    value = value.replace(/\D/g, '');
-    // Adiciona as vírgulas para centavos
-    if (value.length > 2) {
-      value = value.slice(0, -2) + ',' + value.slice(-2);
-    }
-    // Adiciona os pontos para milhares
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    // Adiciona R$
-    if (value) {
-      value = 'R$ ' + value;
-    }
-    setValorPerdido(value);
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -121,24 +106,38 @@ const Simulador = () => {
           {/* Simulador */}
           <div className="bg-card border border-border rounded-2xl p-8 shadow-large">
             <div className="space-y-6">
-              <div className="space-y-2">
+              <div className="space-y-6">
                 <Label htmlFor="valor" className="text-base font-semibold">
-                  Digite o valor que você perdeu (em R$)
+                  Selecione o valor que você perdeu (em R$)
                 </Label>
-                <Input
-                  id="valor"
-                  type="text"
-                  placeholder="R$ 100,00 (mínimo)"
-                  value={valorPerdido}
-                  onChange={handleInputChange}
-                  className="text-lg h-12"
-                />
+                
+                <div className="space-y-4">
+                  <div className="text-center">
+                    <span className="text-3xl font-bold text-primary">
+                      {formatarMoeda(valorPerdido[0])}
+                    </span>
+                  </div>
+                  
+                  <Slider
+                    value={valorPerdido}
+                    onValueChange={setValorPerdido}
+                    max={5000}
+                    min={100}
+                    step={50}
+                    className="w-full"
+                  />
+                  
+                  <div className="flex justify-between text-sm text-muted-foreground">
+                    <span>R$ 100</span>
+                    <span>R$ 5.000</span>
+                  </div>
+                </div>
               </div>
 
               <Button 
                 onClick={calcularRecuperacao}
                 className="w-full btn-cta-primary text-lg py-6"
-                disabled={!valorPerdido}
+                disabled={!valorPerdido[0]}
               >
                 <Calculator className="w-5 h-5 mr-2" />
                 Calcular minha recuperação
