@@ -44,14 +44,14 @@ const Simulador = () => {
       return;
     }
 
-    // Nova lógica de taxa
+    // Nova lógica de taxa fixa
     let taxa;
-    if (usarValorCustomizado || valor >= 1000) {
-      taxa = 150; // Taxa fixa para valores >= 1000 ou customizados
+    if (valor >= 1000) {
+      taxa = 100; // Taxa fixa para valores >= 1000
+    } else if (valor >= 500) {
+      taxa = 50; // Taxa fixa para valores de 500 a 999
     } else {
-      // Para cada R$ 100, adiciona R$ 10 à taxa base de R$ 20
-      const centenas = Math.floor(valor / 100);
-      taxa = 20 + ((centenas - 1) * 10);
+      taxa = 20; // Taxa fixa para valores de 100 a 499
     }
     
     const valorPix = valor - taxa;
@@ -177,7 +177,7 @@ const Simulador = () => {
                       className="text-lg h-12 text-center"
                     />
                     <p className="text-sm text-muted-foreground text-center">
-                      Para valores maiores que R$ 1.000 - Taxa fixa: R$ 150
+                      Para valores maiores que R$ 1.000 - Taxa fixa: R$ 100
                     </p>
                   </div>
                 )}
@@ -228,17 +228,15 @@ const Simulador = () => {
                       </span>
                     </div>
                     
-                    {resultado.taxaEspecial && (
-                      <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa fixa para valores a partir de R$ 1.000: R$ 150,00
-                      </div>
-                    )}
-                    
-                    {!resultado.taxaEspecial && (
-                      <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
-                        Taxa progressiva: R$ 20 base + R$ 10 a cada R$ 100 (até R$ 1.000)
-                      </div>
-                    )}
+                    <div className="text-sm text-primary font-medium bg-primary/10 p-2 rounded">
+                      {resultado.valorPerdido >= 1000 ? (
+                        "Taxa fixa para valores a partir de R$ 1.000: R$ 100,00"
+                      ) : resultado.valorPerdido >= 500 ? (
+                        "Taxa fixa para valores de R$ 500 a R$ 999: R$ 50,00"
+                      ) : (
+                        "Taxa fixa para valores de R$ 100 a R$ 499: R$ 20,00"
+                      )}
+                    </div>
                     
                     <div className="border-t border-primary pt-3">
                       <div className="flex justify-between items-center">
@@ -423,22 +421,8 @@ const Simulador = () => {
                   <Button 
                     className="btn-cta-primary text-lg py-6 px-8"
                     onClick={() => {
-                      const valor = usarValorCustomizado 
-                        ? parseFloat(valorCustomizado.replace(/[^\d,]/g, '').replace(',', '.'))
-                        : valorPerdido[0];
-                      
-                      let link;
-                      if (valor === 100) {
-                        link = 'https://app.pushinpay.com.br/service/pay/9fd94086-dd67-4b68-8ee6-e2afaeb02cb8';
-                      } else if (valor === 200) {
-                        link = 'https://app.pushinpay.com.br/service/pay/9fd94554-6995-45ea-ab56-c07391189cec';
-                      } else if (valor === 300) {
-                        link = 'https://app.pushinpay.com.br/service/pay/9fd945fc-c344-436a-9258-c2e53e2f61c0';
-                      } else {
-                        link = 'https://app.pushinpay.com.br/service/pay/9fd93ba0-8540-4575-82b0-dd76f7aa2037';
-                      }
-                      
-                      window.open(link, '_blank');
+                      // Iniciar processo de recuperação
+                      alert('Processo de recuperação iniciado! Você será contatado em breve.');
                     }}
                     disabled={
                       (casasSelecionadas.length > 0 || outraCasa || maisDeCasa) && 
